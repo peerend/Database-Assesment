@@ -1,5 +1,3 @@
 class Cost < Wallet
 
-
-
 end

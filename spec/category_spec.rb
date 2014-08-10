@@ -22,6 +22,17 @@ describe 'Category' do
     end
   end
 
+  describe '#add_category' do
+    it 'associates a cost with an Expense' do
+      test_expense = Expense.new({:name => "Bearings"})
+      test_expense.save
+      test_category = Category.new({:name => "parts"})
+      test_category.save
+      test_category.add_category(test_expense.id)
+      expect(test_category.in_category).to eq ["Bearings"]
+    end
+  end
+
   describe '#edit' do
     it 'edits category' do
       test_category = Category.new({:name => 'parts'})
