@@ -41,4 +41,16 @@ describe 'Expense' do
       expect(Expense.all[0]).to eq "26"
     end
   end
+
+  describe '#list_expenses' do
+    it 'lists costs with associated expenses' do
+      test_expense = Expense.new({:name => "Bearings"})
+      test_expense.save
+      test_cost = Cost.new({:name => "20"})
+      test_cost.save
+      test_expense.add_expense(test_cost.id)
+      expect(test_cost.list_expenses).to eq ["Bearings"]
+    end
+  end
 end
+
