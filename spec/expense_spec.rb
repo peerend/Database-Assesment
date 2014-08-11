@@ -52,5 +52,27 @@ describe 'Expense' do
       expect(test_cost.list_expenses).to eq ["Bearings"]
     end
   end
+
+  describe '#list_companys' do
+    it 'lists companys with associated expenses' do
+      test_expense = Expense.new({:name => "Bearing"})
+      test_expense.save
+      test_company = Company.new({:name => "SBS"})
+      test_company.save
+      test_expense.add_company(test_company.id)
+      expect(test_expense.list_companys).to eq ["SBS"]
+    end
+  end
+
+  describe '#list_category' do
+    it 'lists categories with associated expenses' do
+      test_expense = Expense.new({:name => "Bearing"})
+      test_expense.save
+      test_category = Category.new({:name => "Parts"})
+      test_category.save
+      test_expense.add_category(test_category.id)
+      expect(test_expense.list_categorys).to eq ["Parts"]
+    end
+  end
 end
 

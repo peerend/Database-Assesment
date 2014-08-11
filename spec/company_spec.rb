@@ -15,7 +15,7 @@ describe 'Company' do
   end
 
   describe '#save' do
-    it 'saves an Company to the Companys table' do
+    it 'saves a Company to the Companys table' do
       test_company = Company.new({:name => "SBS"})
       test_company.save
       expect(Company.all).to eq [test_company]

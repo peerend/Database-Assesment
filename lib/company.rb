@@ -12,5 +12,4 @@ class Company < Wallet
   end
   expenses
   end
-
 end

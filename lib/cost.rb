@@ -10,5 +10,6 @@ class Cost < Wallet
   end
 
   def total_expenditures
-    
+
+  end
 end

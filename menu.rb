@@ -43,18 +43,27 @@ def add_expense
   puts "Please enter an expense"
   expense_name = gets.chomp
   new_expense = Expense.new({:name => expense_name})
-  new_expense.save
-  puts "Expense Added"   
+  new_expense.save  
   puts "Enter Cost" 
   input_cost = gets.chomp 
   new_cost = Cost.new({:name => input_cost})
   new_cost.save
+  puts "Enter company purchased from"
+  input_company = gets.chomp
+  new_company = Company.new({:name => input_company})
+  new_company.save
+  puts "Enter category of purchase"
+  input_category = gets.chomp
+  new_category = Category.new({:name => input_category})
+  new_category.save
+  new_expense.add_company(new_company.id)
   new_expense.add_expense(new_cost.id)
+  new_expense.add_category(new_category.id)
 end
 
 def list_expenses
   Expense.all.each do |expense|
-    puts 'Item: ' + "#{expense.name}" + ', Cost: ' +"#{expense.list_costs}"
+    puts 'Item: ' + "#{expense.name}" + ', Cost: ' +"#{expense.list_costs}" +', Company: ' + "#{expense.list_companys}" + ', Category: ' + "#{expense.list_categorys}"
   end
 end
 
