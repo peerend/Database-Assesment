@@ -7,4 +7,4 @@ In total, seven tables are created for the program, view below schematic for add
 
 Author: Dylan Peerenboom
 
-file:///home/dylan/Pictures/expense.png
+![expense](https://cloud.githubusercontent.com/assets/8154366/3872090/72384c84-210f-11e4-9c59-787dcccc84e8.png)
