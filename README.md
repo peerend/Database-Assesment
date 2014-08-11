@@ -7,4 +7,4 @@ In total, seven tables are created for the program, view below schematic for add
 
 Author: Dylan Peerenboom
 
-(~/Pictures/expense.png)
+file:///home/dylan/Pictures/expense.png
