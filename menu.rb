@@ -4,6 +4,7 @@ require './lib/company'
 require './lib/cost'
 require './lib/expense'
 require 'pg'
+require 'pry'
 DB = PG.connect({:dbname => 'expenses'})
 
 def main_menu
@@ -11,6 +12,7 @@ def main_menu
   loop do
     puts "Press 'a' to add an expense"
     puts "Press 'l' to list expenses"
+    puts "Press 'c' to list categorys"
     puts "Press 'x' to exit"
 
 
@@ -20,7 +22,9 @@ def main_menu
     when 'a'
       add_expense
     when 'l'
-      list_expenses
+      list_expenses_all_info
+    when 'c'
+      list_categorys
     when 'clear'
     DB.exec("DELETE FROM categorys *;")
     DB.exec("DELETE FROM companys *;")
@@ -61,10 +65,31 @@ def add_expense
   new_expense.add_category(new_category.id)
 end
 
-def list_expenses
+def list_categorys_costs
+  Expense.all.each do |expense|
+  puts 'Category: ' + "#{expense.list_categorys}" + ', Cost: ' +"#{expense.list_costs}"
+  end
+end
+
+def list_expenses_all_info
   Expense.all.each do |expense|
     puts 'Item: ' + "#{expense.name}" + ', Cost: ' +"#{expense.list_costs}" +', Company: ' + "#{expense.list_companys}" + ', Category: ' + "#{expense.list_categorys}"
   end
 end
+
+def list_categorys
+  categories = []
+  Expense.all.each do |expense|
+    result = "#{expense.list_categorys}" + "#{expense.list_costs}"
+    categories << result
+    puts categories
+  end
+  puts "Sort categories (y or n)?"
+  answer = gets.chomp.downcase
+  if answer ='y' || 'yes'
+    puts categories.sort
+  end
+end
+
 
 main_menu

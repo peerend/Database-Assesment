@@ -12,8 +12,6 @@ class Expense < Wallet
     DB.exec("INSERT INTO expense_category (expense_id, category_id) VALUES (#{self.id}, #{category_id});")
   end
 
-
-
   def cost_of_expense
     expenses = []
     results = DB.exec("SELECT costs.name FROM

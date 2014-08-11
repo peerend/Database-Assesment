@@ -12,6 +12,4 @@ class Category < Wallet
   end
   expenses
   end
-
-
 end

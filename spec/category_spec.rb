@@ -23,7 +23,7 @@ describe 'Category' do
   end
 
   describe '#add_category' do
-    it 'associates a cost with an Expense' do
+    it 'gives the expenses in a category' do
       test_expense = Expense.new({:name => "Bearings"})
       test_expense.save
       test_category = Category.new({:name => "parts"})
